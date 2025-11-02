@@ -30,7 +30,12 @@ body {
 }
 
 .site-header {
-  background-color: $rails-gray;
+  background-color: #fff5f5;
+  opacity: 0.8;
+  background-image: linear-gradient(135deg, #ffe0e0 25%, transparent 25%), linear-gradient(225deg, #ffe0e0 25%, transparent 25%), linear-gradient(45deg, #ffe0e0 25%, transparent 25%), linear-gradient(315deg, #ffe0e0 25%, #fff5f5 25%);
+  background-position: 10px 0, 10px 0, 0 0, 0 0;
+  background-size: 20px 20px;
+  background-repeat: repeat;
   border-bottom: 2px solid $rails-red;
   
   .site-title {
@@ -102,7 +107,7 @@ body {
 
 .post {
   .post-header {
-    border-bottom: 1px solid $rails-gray;
+    border-bottom: 1px solid #ffb3b3;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
   }
@@ -131,7 +136,12 @@ body {
 }
 
 .site-footer {
-  background-color: $rails-gray;
+  background-color: #fff5f5;
+  opacity: 0.8;
+  background-image: linear-gradient(135deg, #ffe0e0 25%, transparent 25%), linear-gradient(225deg, #ffe0e0 25%, transparent 25%), linear-gradient(45deg, #ffe0e0 25%, transparent 25%), linear-gradient(315deg, #ffe0e0 25%, #fff5f5 25%);
+  background-position: 10px 0, 10px 0, 0 0, 0 0;
+  background-size: 20px 20px;
+  background-repeat: repeat;
   border-top: 2px solid $rails-red;
   color: $rails-text !important;
   
