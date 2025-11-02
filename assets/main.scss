@@ -1,13 +1,15 @@
 ---
 ---
 
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;700&display=swap');
+
 // Rails color palette
 $rails-red: #CC0000;
-$rails-dark: #0f1114;
-$rails-gray: #1a1e24;
-$rails-light-gray: #3a3f48;
-$rails-text: #e2e8f0;
-$rails-code-bg: #0d0f12;
+$rails-dark: #ffffff;
+$rails-gray: #f5f5f5;
+$rails-light-gray: #e8e8e8;
+$rails-text: #1a1a1a;
+$rails-code-bg: #f8f8f8;
 $rails-accent: #f56565;
 
 // Override minima theme variables BEFORE importing (no !default so they override)
@@ -33,9 +35,12 @@ body {
   
   .site-title {
     color: $rails-red !important;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-weight: normal;
+    font-family: 'Brush Script MT', 'Brush Script', 'Pacifico', 'Dancing Script', cursive;
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: 1px;
+    font-size: 2rem;
     
     &:hover {
       color: $rails-accent !important;
@@ -107,7 +112,7 @@ body {
   }
   
   .post-meta {
-    color: $rails-light-gray !important;
+    color: #666666 !important;
   }
 }
 
@@ -121,16 +126,21 @@ body {
   }
   
   .post-meta {
-    color: $rails-light-gray !important;
+    color: #666666 !important;
   }
 }
 
 .site-footer {
   background-color: $rails-gray;
   border-top: 2px solid $rails-red;
+  color: $rails-text !important;
   
   .footer-col-wrapper {
     color: $rails-text !important;
+  }
+  
+  .svg-icon {
+    fill: #666666 !important;
   }
   
   a {
