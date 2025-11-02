@@ -48,6 +48,7 @@ body {
     .title-cursive {
       font-family: 'Brush Script MT', 'Brush Script', 'Pacifico', 'Dancing Script', cursive;
       font-style: normal;
+      padding-right: 0.15em;
     }
     
     .title-dot {
@@ -151,8 +152,8 @@ body {
   }
 
   .post-content {
-    hr + p {
-      margin-top: 15px;
+    hr {
+      margin-bottom: 15px;
     }
   }
 }
