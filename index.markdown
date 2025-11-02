@@ -3,10 +3,17 @@ layout: page
 title: About
 ---
 
-I'm a Rails-only developer, and I like it that way.
+![Photo of me](/assets/images/photo.jpg){:style="float: right; margin: 0 0 1rem 2rem; width: 200px; height: 200px; object-fit: cover; border-radius: 50%;"}
 
-While the tech world spins with new frameworks, languages, and shiny objects every week, I've found my home in Ruby on Rails. There's something beautiful about mastering one framework deeply rather than chasing every trend. Rails gives me everything I need to build robust, maintainable web applications—from convention over configuration to the vibrant ecosystem that's grown around it.
+**Syed Fazil Basheer**  
+Born in 1992 | From Coimbatore, Tamil Nadu
 
-When I'm not writing Rails code, you might find me contributing to open source projects, exploring the gems ecosystem, or helping other developers discover the joy of working with Rails. I believe in building things that work, that last, and that make sense—and Rails has consistently delivered on all fronts for me.
+---
 
-Check out my [posts](/posts/).
+Hey! I'm Fazil. I write Rails code for a living, and honestly? I wouldn't have it any other way.
+
+While everyone else is jumping between frameworks and learning the latest shiny thing, I've been sticking with Rails. It's not that I'm against trying new stuff—it's just that Rails has become my thing. I like the way it works, the community around it, and how it helps me build stuff that actually works.
+
+When I'm not coding, you'll probably find me tinkering with open source stuff or diving into some gem that caught my eye. I also enjoy helping other developers get into Rails—there's something satisfying about watching someone "get it" for the first time.
+
+Want to see what I've been thinking about lately? Check out my [posts](/posts/).

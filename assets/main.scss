@@ -119,6 +119,12 @@ body {
   .post-meta {
     color: #666666 !important;
   }
+
+  .post-content {
+    hr + p {
+      margin-top: 15px;
+    }
+  }
 }
 
 .home .post-list {
