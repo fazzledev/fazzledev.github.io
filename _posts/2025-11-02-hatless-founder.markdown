@@ -9,7 +9,7 @@ A common mistake made by those in senior positions at big companies is that they
 
 A Principal Data Scientist at a VC-funded fintech company worked on a project together. We each took different approaches to analyze a client's data and generate reports for them.
 
-I loaded the data into a spreadsheet and discovered simple actionable insights in just a few of hours. It was approximate, unscalable, and rudimentary.
+I loaded the data into a spreadsheet and discovered simple actionable insights in just a few of hours. It was approximate, unscalable, and rudimentary. Yet, the client found it useful.
 
 He spent an entire week building complex data models and calculations on Jupyter Notebook, but didn't share any clear insights or actionables. His approach was accurate, scalable, and advanced. But the output was upside down.
 
