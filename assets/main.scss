@@ -1,0 +1,143 @@
+---
+---
+
+// Rails color palette
+$rails-red: #CC0000;
+$rails-dark: #0f1114;
+$rails-gray: #1a1e24;
+$rails-light-gray: #3a3f48;
+$rails-text: #e2e8f0;
+$rails-code-bg: #0d0f12;
+$rails-accent: #f56565;
+
+// Override minima theme variables BEFORE importing (no !default so they override)
+$base-font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Consolas', 'Roboto Mono', monospace;
+$text-color: $rails-text;
+$background-color: $rails-dark;
+$brand-color: $rails-red;
+$grey-color: $rails-light-gray;
+
+// Import minima (it will use our variables)
+@import "minima";
+
+// Now add custom overrides
+body {
+  font-family: $base-font-family;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.site-header {
+  background-color: $rails-gray;
+  border-bottom: 2px solid $rails-red;
+  
+  .site-title {
+    color: $rails-red !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    &:hover {
+      color: $rails-accent !important;
+    }
+  }
+  
+  .site-nav .page-link {
+    color: $rails-text !important;
+    
+    &:hover {
+      color: $rails-red !important;
+    }
+  }
+}
+
+.site-main {
+  code {
+    background-color: $rails-code-bg;
+    color: $rails-accent;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+  
+  pre {
+    background-color: $rails-code-bg;
+    border-left: 4px solid $rails-red;
+    padding: 1rem;
+    overflow-x: auto;
+    
+    code {
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+  
+  blockquote {
+    border-left: 4px solid $rails-red;
+    padding-left: 1rem;
+    color: lighten($rails-text, 10%);
+  }
+  
+  a {
+    color: $rails-red !important;
+    
+    &:hover {
+      color: $rails-accent !important;
+    }
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: $rails-text;
+    
+    code {
+      color: $rails-accent;
+    }
+  }
+}
+
+.post {
+  .post-header {
+    border-bottom: 1px solid $rails-gray;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .post-title {
+    color: $rails-text !important;
+  }
+  
+  .post-meta {
+    color: $rails-light-gray !important;
+  }
+}
+
+.home .post-list {
+  .post-link {
+    color: $rails-text !important;
+    
+    &:hover {
+      color: $rails-red !important;
+    }
+  }
+  
+  .post-meta {
+    color: $rails-light-gray !important;
+  }
+}
+
+.site-footer {
+  background-color: $rails-gray;
+  border-top: 2px solid $rails-red;
+  
+  .footer-col-wrapper {
+    color: $rails-text !important;
+  }
+  
+  a {
+    color: $rails-red !important;
+    
+    &:hover {
+      color: $rails-accent !important;
+    }
+  }
+}
