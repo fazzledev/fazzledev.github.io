@@ -17,8 +17,7 @@ The first time I saw it in 2014, I remember asking myself:
 
 I've been in love with it ever since.
 
-I've come a long way from there. I've started a company with Rails. I've built many side projects with Rails. I've worked a few jobs with Rails. I've helped many non-technical people learn Ruby and Rails.
-
+I've come a long way from there. I've started a company, built many side projects, worked a few jobs. All with Rails. I've also helped many non-technical people learn Ruby and Rails.
 
 After 10 years of love, I've started digging deeper into Rails. I'm now comfortable opening gems and tweaking them as per my needs.
 
