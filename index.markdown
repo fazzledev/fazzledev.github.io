@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-![Photo of me](/assets/images/photo.jpg){:style="float: right; margin: 0 0 1rem 2rem; width: 200px; height: 200px; object-fit: cover; border-radius: 50%;"}
+![Photo of me](/assets/images/photo.jpg){:class="profile-photo"}
 
 **Syed Fazil Basheer**  
 Born in 1992 | From Coimbatore, Tamil Nadu
