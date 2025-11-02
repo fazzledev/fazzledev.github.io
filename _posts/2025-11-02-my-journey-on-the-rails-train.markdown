@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "My Journey on the Rails"
+title:  "My Journey on Rails"
 date:   2025-11-02 12:00:00 +0530
 categories: rails journey
 ---
