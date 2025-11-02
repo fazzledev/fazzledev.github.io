@@ -41,11 +41,25 @@ body {
   .site-title {
     color: $rails-red !important;
     font-weight: normal;
-    font-family: 'Brush Script MT', 'Brush Script', 'Pacifico', 'Dancing Script', cursive;
-    font-style: normal;
+    font-size: 2rem;
     text-transform: none;
     letter-spacing: 1px;
-    font-size: 2rem;
+    
+    .title-cursive {
+      font-family: 'Brush Script MT', 'Brush Script', 'Pacifico', 'Dancing Script', cursive;
+      font-style: normal;
+    }
+    
+    .title-dot {
+      font-family: 'Brush Script MT', 'Brush Script', 'Pacifico', 'Dancing Script', cursive;
+    }
+    
+    .title-dev {
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Consolas', 'Roboto Mono', monospace;
+      font-weight: bold;
+      letter-spacing: 0;
+      font-size: 0.7em;
+    }
     
     &:hover {
       color: $rails-accent !important;
