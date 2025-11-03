@@ -26,6 +26,7 @@ baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://fazzledev.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 linkedin_username: fazil-basheer-syed-12b3a3110
 github_username:  fazzledev
+upwork_username: fazzledev
 
 domain: fazzledev.github.io
 
