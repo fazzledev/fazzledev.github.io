@@ -6,9 +6,9 @@ layout: post
   {{ content }}
 
   {% if site.paginate %}
-    {% assign experiences = paginator.experiences %}
+    {% assign experiences = paginator.experiences | sort: 'date' | reverse %}
   {% else %}
-    {% assign experiences = site.experiences %}
+    {% assign experiences = site.experiences | sort: 'date' | reverse %}
   {% endif %}
 
 
