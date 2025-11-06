@@ -292,3 +292,53 @@ figure figcaption {
   font-size: 1.1em;
   font-weight: 500;
 }
+
+.post-navigation {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ffb3b3;
+}
+
+.post-nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.post-nav-item {
+  flex: 1;
+}
+
+.post-nav-previous {
+  text-align: left;
+}
+
+.post-nav-next {
+  text-align: right;
+}
+
+.post-nav-link {
+  display: block;
+  text-decoration: none;
+  color: $rails-text;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: $rails-red;
+  }
+}
+
+.post-nav-label {
+  display: block;
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 0.5rem;
+  font-weight: normal;
+}
+
+.post-nav-title {
+  display: block;
+  font-size: 1.1em;
+  font-weight: 500;
+}
