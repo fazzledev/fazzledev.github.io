@@ -46,7 +46,7 @@
     {% if include.experience.end_date %}
       - {{ include.experience.end_date | date: date_format }}
       {% if duration_text %}
-        ({{ duration_text }})
+        <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
       {% endif %}
     {% else %}
       - Present
@@ -58,7 +58,7 @@
     {% if include.experience.end_date %}
       - {{ include.experience.end_date | date: date_format }}
       {% if duration_text %}
-        ({{ duration_text }})
+        <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
       {% endif %}
     {% else %}
       - Present
