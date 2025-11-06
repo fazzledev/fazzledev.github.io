@@ -1,7 +1,6 @@
 ---
 layout:     experience
 title:      MEDJEE
-date:       2025-07-01
-start_date: November 2018
+start_date: 2025-07-01
 link: https://medjee.info
 ---
