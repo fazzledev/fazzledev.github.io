@@ -342,3 +342,41 @@ figure figcaption {
   font-size: 1.1em;
   font-weight: 500;
 }
+
+.experience-navigation-top,
+.post-navigation-top {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ffb3b3;
+}
+
+.experience-nav-wrapper-top,
+.post-nav-wrapper-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.experience-nav-link-top,
+.post-nav-link-top {
+  font-size: 0.85em;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: $rails-red;
+  }
+  
+  &.disabled {
+    color: #999;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  &.experience-nav-link-center,
+  &.post-nav-link-center {
+    font-weight: 500;
+  }
+}

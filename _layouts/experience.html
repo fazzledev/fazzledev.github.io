@@ -3,6 +3,38 @@ layout: base
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
+  {%- assign sorted_experiences = site.experiences | sort: 'start_date' | reverse -%}
+  {%- for experience in sorted_experiences -%}
+    {%- if experience.url == page.url -%}
+      {%- assign current_index = forloop.index0 -%}
+      {%- assign previous_index = current_index | plus: 1 -%}
+      {%- assign next_index = current_index | minus: 1 -%}
+      {%- if previous_index < sorted_experiences.size -%}
+        {%- assign previous_experience = sorted_experiences[previous_index] -%}
+      {%- endif -%}
+      {%- if next_index >= 0 -%}
+        {%- assign next_experience = sorted_experiences[next_index] -%}
+      {%- endif -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <nav class="experience-navigation-top">
+    <div class="experience-nav-wrapper-top">
+      {%- if previous_experience -%}
+        <a href="{{ previous_experience.url | relative_url }}" class="experience-nav-link-top">← Previous</a>
+      {%- else -%}
+        <span class="experience-nav-link-top disabled">← Previous</span>
+      {%- endif -%}
+      <a href="/experiences/" class="experience-nav-link-top experience-nav-link-center">All</a>
+      {%- if next_experience -%}
+        <a href="{{ next_experience.url | relative_url }}" class="experience-nav-link-top">Next →</a>
+      {%- else -%}
+        <span class="experience-nav-link-top disabled">Next →</span>
+      {%- endif -%}
+    </div>
+  </nav>
+
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <div class="post-meta">
