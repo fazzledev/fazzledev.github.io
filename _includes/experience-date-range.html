@@ -1,0 +1,22 @@
+{%- assign date_format = site.minima.date_format | default: "%B %Y" -%}
+{%- assign start_date = include.experience.start_date | date_to_xmlschema -%}
+{%- if include.wrapper == 'time' -%}
+  <time class="dt-published" datetime="{{ start_date }}" itemprop="datePublished">
+    {{ start_date | date: date_format }}
+    {% if include.experience.end_date %}
+      - {{ include.experience.end_date | date: date_format }}
+    {% else %}
+      - Present
+    {% endif %}
+  </time>
+{%- else -%}
+  <span class="post-meta">
+    {{ include.experience.start_date | date: date_format }}
+    {% if include.experience.end_date %}
+      - {{ include.experience.end_date | date: date_format }}
+    {% else %}
+      - Present
+    {% endif %}
+  </span>
+{%- endif -%}
+
