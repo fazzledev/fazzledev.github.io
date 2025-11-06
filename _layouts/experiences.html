@@ -20,7 +20,14 @@ layout: post
       {%- assign date_format = site.minima.date_format | default: "%B %Y" -%}
       {%- for experience in experiences -%}
       <li>
-        <span class="post-meta">{{ experience.start_date | date: date_format }} - {{ experience.end_date | date: date_format }}</span>
+        <span class="post-meta">
+          {{ experience.start_date | date: date_format }}
+          {% if experience.end_date %}
+            - {{ experience.end_date | date: date_format }}
+          {% else %}
+            - Present
+          {% endif %}
+        </span>
         <h3>
           <a class="post-link" href="{{ experience.url | relative_url }}">
             {{ experience.title | escape }}
