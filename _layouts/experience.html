@@ -16,6 +16,9 @@ layout: base
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
+    {%- if page.bio -%}
+      <p class="company-bio">{{ page.bio }}</p>
+    {%- endif -%}
     {{ content }}
   </div>
 
