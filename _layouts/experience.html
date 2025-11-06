@@ -19,6 +19,46 @@ layout: base
     {{ content }}
   </div>
 
+  {%- assign sorted_experiences = site.experiences | sort: 'start_date' | reverse -%}
+  {%- for experience in sorted_experiences -%}
+    {%- if experience.url == page.url -%}
+      {%- assign current_index = forloop.index0 -%}
+      {%- assign previous_index = current_index | plus: 1 -%}
+      {%- assign next_index = current_index | minus: 1 -%}
+      {%- if previous_index < sorted_experiences.size -%}
+        {%- assign previous_experience = sorted_experiences[previous_index] -%}
+      {%- endif -%}
+      {%- if next_index >= 0 -%}
+        {%- assign next_experience = sorted_experiences[next_index] -%}
+      {%- endif -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <nav class="experience-navigation">
+    <div class="experience-nav-wrapper">
+      {%- if previous_experience -%}
+        <div class="experience-nav-item experience-nav-previous">
+          <a href="{{ previous_experience.url | relative_url }}" class="experience-nav-link">
+            <span class="experience-nav-label">← Previous</span>
+            <span class="experience-nav-title">{{ previous_experience.title | escape }}</span>
+          </a>
+        </div>
+      {%- else -%}
+        <div class="experience-nav-item experience-nav-previous"></div>
+      {%- endif -%}
+      
+      {%- if next_experience -%}
+        <div class="experience-nav-item experience-nav-next">
+          <a href="{{ next_experience.url | relative_url }}" class="experience-nav-link">
+            <span class="experience-nav-label">Next →</span>
+            <span class="experience-nav-title">{{ next_experience.title | escape }}</span>
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </nav>
+
   {% if jekyll.environment == 'production' -%}
     {% if page.comments == false -%}
     <div class="comments-disabled-message">
