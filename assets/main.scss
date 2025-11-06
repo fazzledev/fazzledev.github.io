@@ -418,3 +418,14 @@ figure figcaption {
     font-weight: 500;
   }
 }
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .post-bio {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}
