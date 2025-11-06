@@ -1,10 +1,53 @@
 {%- assign date_format = site.minima.date_format | default: "%B %Y" -%}
 {%- assign start_date = include.experience.start_date | date_to_xmlschema -%}
+{%- assign start_epoch = include.experience.start_date | date: "%s" | plus: 0 -%}
+{%- if include.experience.end_date -%}
+  {%- assign end_date_parsed = include.experience.end_date | date_to_xmlschema -%}
+  {%- assign end_epoch = include.experience.end_date | date: "%s" | plus: 0 -%}
+  {%- if end_epoch > 0 and start_epoch > 0 -%}
+    {%- assign duration_seconds = end_epoch | minus: start_epoch -%}
+    {%- if duration_seconds > 0 -%}
+      {%- assign duration_days = duration_seconds | divided_by: 86400 -%}
+      {%- assign duration_months = duration_days | divided_by: 30 -%}
+      {%- assign duration_years = duration_days | divided_by: 365 -%}
+      {%- if duration_months >= 1 -%}
+        {%- if duration_years > 0 -%}
+          {%- assign years_days = duration_years | times: 365 -%}
+          {%- assign remaining_days = duration_days | minus: years_days -%}
+          {%- assign remaining_months = remaining_days | divided_by: 30 -%}
+          {%- if remaining_months >= 1 -%}
+            {%- assign duration_text = duration_years | append: " year" -%}
+            {%- if duration_years > 1 -%}
+              {%- assign duration_text = duration_text | append: "s" -%}
+            {%- endif -%}
+            {%- assign duration_text = duration_text | append: " " | append: remaining_months | append: " month" -%}
+            {%- if remaining_months > 1 -%}
+              {%- assign duration_text = duration_text | append: "s" -%}
+            {%- endif -%}
+          {%- else -%}
+            {%- assign duration_text = duration_years | append: " year" -%}
+            {%- if duration_years > 1 -%}
+              {%- assign duration_text = duration_text | append: "s" -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- else -%}
+          {%- assign duration_text = duration_months | append: " month" -%}
+          {%- if duration_months > 1 -%}
+            {%- assign duration_text = duration_text | append: "s" -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
 {%- if include.wrapper == 'time' -%}
   <time class="dt-published" datetime="{{ start_date }}" itemprop="datePublished">
     {{ start_date | date: date_format }}
     {% if include.experience.end_date %}
       - {{ include.experience.end_date | date: date_format }}
+      {% if duration_text %}
+        ({{ duration_text }})
+      {% endif %}
     {% else %}
       - Present
     {% endif %}
@@ -14,6 +57,9 @@
     {{ include.experience.start_date | date: date_format }}
     {% if include.experience.end_date %}
       - {{ include.experience.end_date | date: date_format }}
+      {% if duration_text %}
+        ({{ duration_text }})
+      {% endif %}
     {% else %}
       - Present
     {% endif %}
