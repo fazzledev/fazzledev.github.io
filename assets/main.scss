@@ -220,6 +220,17 @@ figure figcaption {
   margin-top: 0.5em;
 }
 
+.post-list li .duration-separator,
+.post-list li .duration-text {
+  opacity: 0 !important;
+  transition: opacity 0.2s ease;
+}
+
+.post-list li:hover .duration-separator,
+.post-list li:hover .duration-text {
+  opacity: 1 !important;
+}
+
 .duration-separator {
   margin: 0 0.1em;
   color: #999;
