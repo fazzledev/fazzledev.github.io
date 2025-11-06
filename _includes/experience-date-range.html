@@ -4,37 +4,39 @@
 {%- if include.experience.end_date -%}
   {%- assign end_date_parsed = include.experience.end_date | date_to_xmlschema -%}
   {%- assign end_epoch = include.experience.end_date | date: "%s" | plus: 0 -%}
-  {%- if end_epoch > 0 and start_epoch > 0 -%}
-    {%- assign duration_seconds = end_epoch | minus: start_epoch -%}
-    {%- if duration_seconds > 0 -%}
-      {%- assign duration_days = duration_seconds | divided_by: 86400 -%}
-      {%- assign duration_months = duration_days | divided_by: 30 -%}
-      {%- assign duration_years = duration_days | divided_by: 365 -%}
-      {%- if duration_months >= 1 -%}
-        {%- if duration_years > 0 -%}
-          {%- assign years_days = duration_years | times: 365 -%}
-          {%- assign remaining_days = duration_days | minus: years_days -%}
-          {%- assign remaining_months = remaining_days | divided_by: 30 -%}
-          {%- if remaining_months >= 1 -%}
-            {%- assign duration_text = duration_years | append: " year" -%}
-            {%- if duration_years > 1 -%}
-              {%- assign duration_text = duration_text | append: "s" -%}
-            {%- endif -%}
-            {%- assign duration_text = duration_text | append: " " | append: remaining_months | append: " month" -%}
-            {%- if remaining_months > 1 -%}
-              {%- assign duration_text = duration_text | append: "s" -%}
-            {%- endif -%}
-          {%- else -%}
-            {%- assign duration_text = duration_years | append: " year" -%}
-            {%- if duration_years > 1 -%}
-              {%- assign duration_text = duration_text | append: "s" -%}
-            {%- endif -%}
-          {%- endif -%}
-        {%- else -%}
-          {%- assign duration_text = duration_months | append: " month" -%}
-          {%- if duration_months > 1 -%}
+{%- else -%}
+  {%- assign end_epoch = site.time | date: "%s" | plus: 0 -%}
+{%- endif -%}
+{%- if end_epoch > 0 and start_epoch > 0 -%}
+  {%- assign duration_seconds = end_epoch | minus: start_epoch -%}
+  {%- if duration_seconds > 0 -%}
+    {%- assign duration_days = duration_seconds | divided_by: 86400 -%}
+    {%- assign duration_months = duration_days | divided_by: 30 -%}
+    {%- assign duration_years = duration_days | divided_by: 365 -%}
+    {%- if duration_months >= 1 -%}
+      {%- if duration_years > 0 -%}
+        {%- assign years_days = duration_years | times: 365 -%}
+        {%- assign remaining_days = duration_days | minus: years_days -%}
+        {%- assign remaining_months = remaining_days | divided_by: 30 -%}
+        {%- if remaining_months >= 1 -%}
+          {%- assign duration_text = duration_years | append: " year" -%}
+          {%- if duration_years > 1 -%}
             {%- assign duration_text = duration_text | append: "s" -%}
           {%- endif -%}
+          {%- assign duration_text = duration_text | append: " " | append: remaining_months | append: " month" -%}
+          {%- if remaining_months > 1 -%}
+            {%- assign duration_text = duration_text | append: "s" -%}
+          {%- endif -%}
+        {%- else -%}
+          {%- assign duration_text = duration_years | append: " year" -%}
+          {%- if duration_years > 1 -%}
+            {%- assign duration_text = duration_text | append: "s" -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- else -%}
+        {%- assign duration_text = duration_months | append: " month" -%}
+        {%- if duration_months > 1 -%}
+          {%- assign duration_text = duration_text | append: "s" -%}
         {%- endif -%}
       {%- endif -%}
     {%- endif -%}
@@ -50,6 +52,9 @@
       {% endif %}
     {% else %}
       - Present
+      {% if duration_text %}
+        <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
+      {% endif %}
     {% endif %}
   </time>
 {%- else -%}
@@ -62,6 +67,9 @@
       {% endif %}
     {% else %}
       - Present
+      {% if duration_text %}
+        <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
+      {% endif %}
     {% endif %}
   </span>
 {%- endif -%}
