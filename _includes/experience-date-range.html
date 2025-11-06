@@ -10,15 +10,25 @@
 {%- if end_epoch > 0 and start_epoch > 0 -%}
   {%- assign duration_seconds = end_epoch | minus: start_epoch -%}
   {%- if duration_seconds > 0 -%}
-    {%- assign duration_days = duration_seconds | divided_by: 86400 -%}
-    {%- assign duration_months = duration_days | divided_by: 30 -%}
-    {%- assign duration_years = duration_days | divided_by: 365 -%}
-    {%- if duration_months >= 1 -%}
+    {%- assign start_year = include.experience.start_date | date: "%Y" | plus: 0 -%}
+    {%- assign start_month_str = include.experience.start_date | date: "%m" -%}
+    {%- assign start_month = start_month_str | plus: 0 -%}
+    {%- if include.experience.end_date -%}
+      {%- assign end_year = include.experience.end_date | date: "%Y" | plus: 0 -%}
+      {%- assign end_month_str = include.experience.end_date | date: "%m" -%}
+      {%- assign end_month = end_month_str | plus: 0 -%}
+    {%- else -%}
+      {%- assign end_year = site.time | date: "%Y" | plus: 0 -%}
+      {%- assign end_month_str = site.time | date: "%m" -%}
+      {%- assign end_month = end_month_str | plus: 0 -%}
+    {%- endif -%}
+    {%- assign total_months = end_year | minus: start_year | times: 12 | plus: end_month | minus: start_month | plus: 1 -%}
+    {%- if total_months >= 1 -%}
+      {%- assign duration_years = total_months | divided_by: 12 -%}
+      {%- assign years_in_months = duration_years | times: 12 -%}
+      {%- assign remaining_months = total_months | minus: years_in_months -%}
       {%- if duration_years > 0 -%}
-        {%- assign years_days = duration_years | times: 365 -%}
-        {%- assign remaining_days = duration_days | minus: years_days -%}
-        {%- assign remaining_months = remaining_days | divided_by: 30 -%}
-        {%- if remaining_months >= 1 -%}
+        {%- if remaining_months > 0 -%}
           {%- assign duration_text = duration_years | append: " year" -%}
           {%- if duration_years > 1 -%}
             {%- assign duration_text = duration_text | append: "s" -%}
@@ -34,8 +44,8 @@
           {%- endif -%}
         {%- endif -%}
       {%- else -%}
-        {%- assign duration_text = duration_months | append: " month" -%}
-        {%- if duration_months > 1 -%}
+        {%- assign duration_text = total_months | append: " month" -%}
+        {%- if total_months > 1 -%}
           {%- assign duration_text = duration_text | append: "s" -%}
         {%- endif -%}
       {%- endif -%}
