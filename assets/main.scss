@@ -210,6 +210,20 @@ body {
   }
 }
 
+.experience-ongoing {
+  position: relative;
+  
+  &::after {
+    content: "*";
+    color: $rails-red;
+    font-size: 0.85em;
+    margin-left: 0.15em;
+    opacity: 0.8;
+    font-weight: normal;
+    position: absolute;
+  }
+}
+
 .site-footer {
   background-color: #fff5f5;
   opacity: 0.8;
