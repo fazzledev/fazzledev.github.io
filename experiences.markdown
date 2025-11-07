@@ -2,8 +2,5 @@
 layout: experiences
 title: Experience
 permalink: /experiences/
----
-
-Jobs, internships, contract works.
-
+bio: Contract works, jobs, and internships.
 ---

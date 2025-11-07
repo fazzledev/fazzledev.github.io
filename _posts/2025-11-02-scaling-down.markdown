@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The Hatless Founder"
+title:  Scaling Down
 date:   2025-11-02 13:00:00 +0530
 categories: founder
 ---
@@ -13,6 +13,6 @@ When he got his first client, he was off to the races on the tools he knew best 
 
 That's when he reached out to me for ideas. I'm not a data scientist. So, I loaded the data onto a spreadsheet and did some simple analysis. In a couple of hours I gave him some actionable insights which his client found interesting.
 
-> **Sometimes, the right tool is the one that gets you answers today, not the one that scales tomorrow.** Leave the hat at the door.
+> **Sometimes, the right tool is the one that gets you answers today, not the one that scales tomorrow.** Founders should leave the hat at the door.
 
 This was not because I was a better data analyst than him. Rather, it was actually because I was not as skilled as him. Once he understood this, he was able to produce many and more useful insights by keeping this simple. We learned to keep the business problem over and above the technical solution.
