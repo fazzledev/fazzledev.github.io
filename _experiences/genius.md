@@ -5,6 +5,7 @@ start_date: 2017-12-01
 end_date:   August 2018
 link: https://geniusteacher.in
 bio: Genius Learning Labs operates Genius, an educational technology platform that makes quizzes and concept videos.
+role: Writer
 ---
 
 ## Content Writer

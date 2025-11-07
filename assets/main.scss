@@ -198,6 +198,7 @@ body {
 
 .home .post-list {
   .post-link {
+    width: fit-content;
     color: $rails-text !important;
     
     &:hover {

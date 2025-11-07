@@ -20,6 +20,10 @@ layout: index
       {%- for experience in experiences -%}
       <li>
         {% include experience-date-range.html experience=experience %}
+
+        {%- if experience.role -%}
+        <span class="experience-role">{{ experience.role }}</span>
+        {%- endif -%}
         <h3>
           <a class="post-link" href="{{ experience.url | relative_url }}">
             {{ experience.title | escape }}

@@ -5,9 +5,10 @@ start_date: 2018-11-01
 end_date:   July 2019
 link: https://codeastra.com
 bio: Code Astra specializes in web and mobile app development, helping transform ideas into products.
+role: Developer
 ---
 
-## Software Engineer
+## Developer
 
 * Built complex back-end​ systems that encapsulate business logic
 * Built beautiful front-end​ interactions that are consistent across features
