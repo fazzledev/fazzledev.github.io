@@ -52,14 +52,25 @@ layout: base
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <span>Company: {{ page.company_id }}</span>
-    {% assign experience_roles = site.roles | where: "company", page.title %}
-    <h2>Roles</h2>
-    <ul>
-      {% for role in experience_roles %}
-      <li>{{ role.title }} - {{ role.company }}</li>
-      {% endfor %}
-    </ul>
+    {% assign experience_path_parts = page.path | split: '/' %}
+    {% assign experience_filename = experience_path_parts | last | split: '.' | first %}
+    {% assign matched_roles = "" | split: "" %}
+    {% for role in site.roles %}
+      {% assign role_path_parts = role.path | split: '/' %}
+      {% if role_path_parts.size > 2 %}
+        {% assign role_directory = role_path_parts[1] %}
+        {% if role_directory == experience_filename %}
+          {% assign matched_roles = matched_roles | push: role %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% for role in matched_roles %}
+    <h2>{{ role.title }}</h2>
+
+    {{ role.content | markdownify }}
+    {% endfor %}
+
     {{ content }}
   </div>
 
