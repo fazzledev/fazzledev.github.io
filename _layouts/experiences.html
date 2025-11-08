@@ -21,8 +21,52 @@ layout: index
       <li>
         {% include date-range.html start_date=experience.start_date end_date=experience.end_date %}
 
-        {%- if experience.role -%}
-        <span class="experience-role">{{ experience.role }}</span>
+        {%- assign experience_path_parts = experience.path | split: '/' -%}
+        {%- assign experience_filename = experience_path_parts | last | split: '.' | first -%}
+        {%- assign matched_roles = "" | split: "" -%}
+        {%- for role in site.roles -%}
+          {%- assign role_path_parts = role.path | split: '/' -%}
+          {%- if role_path_parts.size > 2 -%}
+            {%- assign role_directory = role_path_parts[1] -%}
+            {%- if role_directory == experience_filename -%}
+              {%- assign matched_roles = matched_roles | push: role -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if matched_roles.size > 0 -%}
+          {%- assign sorted_roles = "" | split: "" -%}
+          {%- for i in (0..999) -%}
+            {%- assign found_role = null -%}
+            {%- assign earliest_date = null -%}
+            {%- for role in matched_roles -%}
+              {%- assign already_sorted = false -%}
+              {%- for sorted_role in sorted_roles -%}
+                {%- if sorted_role.path == role.path -%}
+                  {%- assign already_sorted = true -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- unless already_sorted -%}
+                {%- if role.start_date -%}
+                  {%- assign role_date_epoch = role.start_date | date: "%s" | plus: 0 -%}
+                  {%- if earliest_date == null or role_date_epoch < earliest_date -%}
+                    {%- assign earliest_date = role_date_epoch -%}
+                    {%- assign found_role = role -%}
+                  {%- endif -%}
+                {%- else -%}
+                  {%- if earliest_date == null -%}
+                    {%- assign found_role = role -%}
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endunless -%}
+            {%- endfor -%}
+            {%- if found_role -%}
+              {%- assign sorted_roles = sorted_roles | push: found_role -%}
+            {%- else -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+          <span class="experience-role">{%- for role in sorted_roles -%}{{ role.title }}{%- unless forloop.last -%}, {% endunless %}{%- endfor -%}</span>
         {%- endif -%}
         <h3>
           <a class="post-link" href="{{ experience.url | relative_url }}">
