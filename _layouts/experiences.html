@@ -19,7 +19,7 @@ layout: index
     <ul class="post-list">
       {%- for experience in experiences -%}
       <li>
-        {% include experience-date-range.html experience=experience %}
+        {% include date-range.html start_date=experience.start_date end_date=experience.end_date %}
 
         {%- if experience.role -%}
         <span class="experience-role">{{ experience.role }}</span>

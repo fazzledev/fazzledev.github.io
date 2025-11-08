@@ -1,21 +1,21 @@
 {%- assign date_format = site.minima.date_format | default: "%B %Y" -%}
-{%- assign start_date = include.experience.start_date | date_to_xmlschema -%}
-{%- assign start_epoch = include.experience.start_date | date: "%s" | plus: 0 -%}
-{%- if include.experience.end_date -%}
-  {%- assign end_date_parsed = include.experience.end_date | date_to_xmlschema -%}
-  {%- assign end_epoch = include.experience.end_date | date: "%s" | plus: 0 -%}
+{%- assign start_date = include.start_date | date_to_xmlschema -%}
+{%- assign start_epoch = include.start_date | date: "%s" | plus: 0 -%}
+{%- if include.end_date -%}
+  {%- assign end_date_parsed = include.end_date | date_to_xmlschema -%}
+  {%- assign end_epoch = include.end_date | date: "%s" | plus: 0 -%}
 {%- else -%}
   {%- assign end_epoch = site.time | date: "%s" | plus: 0 -%}
 {%- endif -%}
 {%- if end_epoch > 0 and start_epoch > 0 -%}
   {%- assign duration_seconds = end_epoch | minus: start_epoch -%}
   {%- if duration_seconds > 0 -%}
-    {%- assign start_year = include.experience.start_date | date: "%Y" | plus: 0 -%}
-    {%- assign start_month_str = include.experience.start_date | date: "%m" -%}
+    {%- assign start_year = include.start_date | date: "%Y" | plus: 0 -%}
+    {%- assign start_month_str = include.start_date | date: "%m" -%}
     {%- assign start_month = start_month_str | plus: 0 -%}
-    {%- if include.experience.end_date -%}
-      {%- assign end_year = include.experience.end_date | date: "%Y" | plus: 0 -%}
-      {%- assign end_month_str = include.experience.end_date | date: "%m" -%}
+    {%- if include.end_date -%}
+      {%- assign end_year = include.end_date | date: "%Y" | plus: 0 -%}
+      {%- assign end_month_str = include.end_date | date: "%m" -%}
       {%- assign end_month = end_month_str | plus: 0 -%}
     {%- else -%}
       {%- assign end_year = site.time | date: "%Y" | plus: 0 -%}
@@ -54,9 +54,9 @@
 {%- endif -%}
 {%- assign current_year = site.time | date: "%Y" | plus: 0 -%}
 {%- assign current_month = site.time | date: "%m" | plus: 0 -%}
-{%- if include.experience.end_date -%}
-  {%- assign end_year = include.experience.end_date | date: "%Y" | plus: 0 -%}
-  {%- assign end_month_str = include.experience.end_date | date: "%m" -%}
+{%- if include.end_date -%}
+  {%- assign end_year = include.end_date | date: "%Y" | plus: 0 -%}
+  {%- assign end_month_str = include.end_date | date: "%m" -%}
   {%- assign end_month = end_month_str | plus: 0 -%}
   {%- if end_year > current_year -%}
     {%- assign is_ongoing = true -%}
@@ -71,8 +71,8 @@
 {%- if include.wrapper == 'time' -%}
   <time class="dt-published" datetime="{{ start_date }}" itemprop="datePublished">
     {{ start_date | date: date_format }}
-    {% if include.experience.end_date %}
-      - <span{% if is_ongoing %} class="experience-ongoing"{% endif %}>{{ include.experience.end_date | date: date_format }}</span>
+    {% if include.end_date %}
+      - <span{% if is_ongoing %} class="experience-ongoing"{% endif %}>{{ include.end_date | date: date_format }}</span>
       {% if duration_text %}
         <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
       {% endif %}
@@ -85,9 +85,9 @@
   </time>
 {%- else -%}
   <span class="post-meta">
-    {{ include.experience.start_date | date: date_format }}
-    {% if include.experience.end_date %}
-      - <span{% if is_ongoing %} class="experience-ongoing"{% endif %}>{{ include.experience.end_date | date: date_format }}</span>
+    {{ include.start_date | date: date_format }}
+    {% if include.end_date %}
+      - <span{% if is_ongoing %} class="experience-ongoing"{% endif %}>{{ include.end_date | date: date_format }}</span>
       {% if duration_text %}
         <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
       {% endif %}
