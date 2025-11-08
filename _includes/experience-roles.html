@@ -11,7 +11,33 @@
   {% endif %}
 {% endfor %}
 
-{% assign sorted_roles = matched_roles | sort: "start_date" | reverse %}
+{% assign sorted_roles = "" | split: "" %}
+{% for i in (0..999) %}
+  {% assign found_role = null %}
+  {% assign latest_date = 0 %}
+  {% for role in matched_roles %}
+    {% assign role_date_epoch = role.start_date | date: "%s" | plus: 0 %}
+    {% assign already_sorted = false %}
+    {% for sorted_role in sorted_roles %}
+      {% if sorted_role.path == role.path %}
+        {% assign already_sorted = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% unless already_sorted %}
+      {% if role_date_epoch > latest_date %}
+        {% assign latest_date = role_date_epoch %}
+        {% assign found_role = role %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+  {% if found_role %}
+    {% assign sorted_roles = sorted_roles | push: found_role %}
+  {% else %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
 {% for role in sorted_roles %}
 {% include date-range.html start_date=role.start_date end_date=role.end_date %}
 <h2>{{ role.title }}</h2>
