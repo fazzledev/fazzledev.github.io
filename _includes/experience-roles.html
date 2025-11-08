@@ -45,7 +45,9 @@
 {% endfor %}
 
 {% for role in sorted_roles %}
+{% if sorted_roles.size > 1 %}
 {% include date-range.html start_date=role.start_date end_date=role.end_date %}
+{% endif %}
 <h2>{{ role.title }}</h2>
 
 {{ role.content | markdownify }}
