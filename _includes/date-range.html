@@ -68,35 +68,18 @@
 {%- else -%}
   {%- assign is_ongoing = true -%}
 {%- endif -%}
-{%- if include.wrapper == 'time' -%}
-  <time class="dt-published" datetime="{{ start_date }}" itemprop="datePublished">
-    {{ start_date | date: date_format }}
-    {% if include.end_date %}
-      - <span{% if is_ongoing %} class="experience-ongoing"{% endif %}>{{ include.end_date | date: date_format }}</span>
-      {% if duration_text %}
-        <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
-      {% endif %}
-    {% else %}
-      - Present
-      {% if duration_text %}
-        <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
-      {% endif %}
+<span class="post-meta">
+  {{ include.start_date | date: date_format }}
+  {% if include.end_date %}
+    - <span{% if is_ongoing %} class="experience-ongoing"{% endif %}>{{ include.end_date | date: date_format }}</span>
+    {% if duration_text %}
+      <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
     {% endif %}
-  </time>
-{%- else -%}
-  <span class="post-meta">
-    {{ include.start_date | date: date_format }}
-    {% if include.end_date %}
-      - <span{% if is_ongoing %} class="experience-ongoing"{% endif %}>{{ include.end_date | date: date_format }}</span>
-      {% if duration_text %}
-        <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
-      {% endif %}
-    {% else %}
-      - Present
-      {% if duration_text %}
-        <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
-      {% endif %}
+  {% else %}
+    - Present
+    {% if duration_text %}
+      <span class="duration-separator"> · </span><span class="duration-text">{{ duration_text }}</span>
     {% endif %}
-  </span>
-{%- endif -%}
+  {% endif %}
+</span>
 
