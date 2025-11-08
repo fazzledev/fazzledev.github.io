@@ -11,7 +11,9 @@
   {% endif %}
 {% endfor %}
 
-{% for role in matched_roles %}
+{% assign sorted_roles = matched_roles | sort: "start_date" | reverse %}
+{% for role in sorted_roles %}
+{% include date-range.html start_date=role.start_date end_date=role.end_date %}
 <h2>{{ role.title }}</h2>
 
 {{ role.content | markdownify }}
