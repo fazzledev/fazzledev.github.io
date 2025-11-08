@@ -4,20 +4,21 @@ start_date: 2019-08-01
 end_date: June 2020
 ---
 
-### Developed and maintained​ KuveraGold​ with high test coverage and reliability
-* RESTful APIs with ​ controller tests​ and ​ apib documentation
+### KuveraGold <span class="work-type" data-type="feature">feature</span>
+
+* RESTful APIs with ​controller tests​ and ​apib documentation
 * DRY-ly inherited request objects for 3rd party API​ s
     * Augmont​ for buying and selling gold, users' passbook, etc.,
     * Razorpay​ for payment charging, transfers, and refunds
 * Defense​ against hackers and fraudulent users
 * Caching​ of the live gold price to improve server performance
 
-### Guided​ the development of other features, products, and practices
-* Systematic Orders​ to be reusable​ with different kinds of products and payments
-* Rails Engines​ based sub-applications for ​ Equity​ and ​ Loan against Security
+### Senior <span class="work-type" data-type="role">role</span>
+* Systematic Orders​ to be reusable​ with multiple products and payments
+* Rails Engines​ based sub-applications for​ Equity​ and ​Loan against Security
 * Acceptance tests driven API documentation across all products
 
-### Implemented​ a complex referral bonus program's reward executor that is
+### Referral Program <span class="work-type" data-type="feature">feature</span>
 * Extendable​ to different types of rewards
 * Configurable​ with a simple YAML file
 * Trackable​ with step-by-step logs
@@ -25,5 +26,7 @@ end_date: June 2020
 * Dry-runnable​ to validate output without side-effects
 * Reentrant​ to restart the execution without duplicate bonuses
 
-### Refactored​ legacy code after writing tests to improve performance and quality
-
+### Legacy Systems <span class="work-type" data-type="maintenance">maintenance</span>
+* Introduced automated tests
+* Improved performance
+* Refactored for better code quality
