@@ -1,5 +1,7 @@
 ---
 title: Senior Developer
+start_date: 2019-08-01
+end_date: June 2020
 ---
 
 ### Developed and maintained​ KuveraGold​ with high test coverage and reliability

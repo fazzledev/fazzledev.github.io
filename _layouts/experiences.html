@@ -6,10 +6,69 @@ layout: index
   {{ content }}
 
   {% if site.paginate %}
-    {% assign experiences = paginator.experiences | sort: 'start_date' | reverse %}
+    {% assign all_experiences = paginator.experiences %}
   {% else %}
-    {% assign experiences = site.experiences | sort: 'start_date' | reverse %}
+    {% assign all_experiences = site.experiences %}
   {% endif %}
+  {% assign sorted_experiences = "" | split: "" %}
+  {% for i in (0..999) %}
+    {% assign found_experience = null %}
+    {% assign latest_date = null %}
+    {% for experience in all_experiences %}
+      {% assign already_sorted = false %}
+      {% for sorted_exp in sorted_experiences %}
+        {% if sorted_exp.path == experience.path %}
+          {% assign already_sorted = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% unless already_sorted %}
+        {% assign experience_path_parts = experience.path | split: '/' %}
+        {% assign experience_filename = experience_path_parts | last | split: '.' | first %}
+        {% assign experience_roles = "" | split: "" %}
+        {% for role in site.roles %}
+          {% assign role_path_parts = role.path | split: '/' %}
+          {% if role_path_parts.size > 2 %}
+            {% assign role_directory = role_path_parts[1] %}
+            {% if role_directory == experience_filename %}
+              {% assign experience_roles = experience_roles | push: role %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        {% assign earliest_start = null %}
+        {% for role in experience_roles %}
+          {% if role.start_date %}
+            {% if earliest_start == null %}
+              {% assign earliest_start = role.start_date %}
+            {% else %}
+              {% assign role_start_epoch = role.start_date | date: "%s" | plus: 0 %}
+              {% assign earliest_start_epoch = earliest_start | date: "%s" | plus: 0 %}
+              {% if role_start_epoch < earliest_start_epoch %}
+                {% assign earliest_start = role.start_date %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        {% if earliest_start %}
+          {% assign earliest_start_epoch = earliest_start | date: "%s" | plus: 0 %}
+          {% if latest_date == null or earliest_start_epoch > latest_date %}
+            {% assign latest_date = earliest_start_epoch %}
+            {% assign found_experience = experience %}
+          {% endif %}
+        {% else %}
+          {% if latest_date == null %}
+            {% assign found_experience = experience %}
+          {% endif %}
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+    {% if found_experience %}
+      {% assign sorted_experiences = sorted_experiences | push: found_experience %}
+    {% else %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% assign experiences = sorted_experiences %}
 
 
   {%- if experiences.size > 0 -%}
@@ -19,20 +78,47 @@ layout: index
     <ul class="post-list">
       {%- for experience in experiences -%}
       <li>
-        {% include date-range.html start_date=experience.start_date end_date=experience.end_date %}
-
         {%- assign experience_path_parts = experience.path | split: '/' -%}
         {%- assign experience_filename = experience_path_parts | last | split: '.' | first -%}
-        {%- assign matched_roles = "" | split: "" -%}
+        {%- assign experience_roles = "" | split: "" -%}
         {%- for role in site.roles -%}
           {%- assign role_path_parts = role.path | split: '/' -%}
           {%- if role_path_parts.size > 2 -%}
             {%- assign role_directory = role_path_parts[1] -%}
             {%- if role_directory == experience_filename -%}
-              {%- assign matched_roles = matched_roles | push: role -%}
+              {%- assign experience_roles = experience_roles | push: role -%}
             {%- endif -%}
           {%- endif -%}
         {%- endfor -%}
+        {%- assign earliest_start = null -%}
+        {%- assign latest_end = null -%}
+        {%- for role in experience_roles -%}
+          {%- if role.start_date -%}
+            {%- if earliest_start == null -%}
+              {%- assign earliest_start = role.start_date -%}
+            {%- else -%}
+              {%- assign role_start_epoch = role.start_date | date: "%s" | plus: 0 -%}
+              {%- assign earliest_start_epoch = earliest_start | date: "%s" | plus: 0 -%}
+              {%- if role_start_epoch < earliest_start_epoch -%}
+                {%- assign earliest_start = role.start_date -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if role.end_date -%}
+            {%- if latest_end == null -%}
+              {%- assign latest_end = role.end_date -%}
+            {%- else -%}
+              {%- assign role_end_epoch = role.end_date | date: "%s" | plus: 0 -%}
+              {%- assign latest_end_epoch = latest_end | date: "%s" | plus: 0 -%}
+              {%- if role_end_epoch > latest_end_epoch -%}
+                {%- assign latest_end = role.end_date -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {% include date-range.html start_date=earliest_start end_date=latest_end %}
+
+        {%- assign matched_roles = experience_roles -%}
         {%- if matched_roles.size > 0 -%}
           {%- assign sorted_roles = "" | split: "" -%}
           {%- for i in (0..999) -%}
