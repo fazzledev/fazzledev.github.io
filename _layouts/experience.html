@@ -52,6 +52,14 @@ layout: base
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
+    <span>Company: {{ page.company_id }}</span>
+    {% assign experience_roles = site.roles | where: "company", page.title %}
+    <h2>Roles</h2>
+    <ul>
+      {% for role in experience_roles %}
+      <li>{{ role.title }} - {{ role.company }}</li>
+      {% endfor %}
+    </ul>
     {{ content }}
   </div>
 
