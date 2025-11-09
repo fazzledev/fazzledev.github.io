@@ -4,7 +4,7 @@ start_date: 2019-08-01
 end_date: June 2020
 ---
 
-### KuveraGold <span class="work-type" data-type="feature">feature</span>
+### KuveraGold Product Development
 
 * RESTful APIs with ​controller tests​ and ​apib documentation
 * DRY-ly inherited request objects for 3rd party API​ s
@@ -13,12 +13,14 @@ end_date: June 2020
 * Defense​ against hackers and fraudulent users
 * Caching​ of the live gold price to improve server performance
 
-### Senior <span class="work-type" data-type="role">role</span>
+### Mentoring Peers
+
 * Systematic Orders​ to be reusable​ with multiple products and payments
 * Rails Engines​ based sub-applications for​ Equity​ and ​Loan against Security
 * Acceptance tests driven API documentation across all products
 
-### Referral Program <span class="work-type" data-type="feature">feature</span>
+### Referral Program Development
+
 * Extendable​ to different types of rewards
 * Configurable​ with a simple YAML file
 * Trackable​ with step-by-step logs
@@ -26,7 +28,8 @@ end_date: June 2020
 * Dry-runnable​ to validate output without side-effects
 * Reentrant​ to restart the execution without duplicate bonuses
 
-### Legacy Systems <span class="work-type" data-type="maintenance">maintenance</span>
+### Legacy Systems Maintenance
+
 * Introduced automated tests
 * Improved performance
 * Refactored for better code quality
