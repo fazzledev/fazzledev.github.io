@@ -437,3 +437,7 @@ figure figcaption {
   padding: unset;
   font-size: unset;
 }
+
+ul + .date-range {
+  margin-top: 2rem;
+}

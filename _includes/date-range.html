@@ -68,7 +68,7 @@
 {%- else -%}
   {%- assign is_ongoing = true -%}
 {%- endif -%}
-<span class="post-meta">
+<span class="post-meta date-range">
   {{ include.start_date | date: date_format }}
   {% if include.end_date %}
     - <span{% if is_ongoing %} class="experience-ongoing"{% endif %}>{{ include.end_date | date: date_format }}</span>
