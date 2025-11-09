@@ -1,4 +1,4 @@
-{%- assign date_format = site.minima.date_format | default: "%B %Y" -%}
+{%- assign date_format = site.minima.date_format | default: "%b '%y" -%}
 {%- assign start_date = include.start_date | date_to_xmlschema -%}
 {%- assign start_epoch = include.start_date | date: "%s" | plus: 0 -%}
 {%- if include.end_date -%}
@@ -29,25 +29,13 @@
       {%- assign remaining_months = total_months | minus: years_in_months -%}
       {%- if duration_years > 0 -%}
         {%- if remaining_months > 0 -%}
-          {%- assign duration_text = duration_years | append: " year" -%}
-          {%- if duration_years > 1 -%}
-            {%- assign duration_text = duration_text | append: "s" -%}
-          {%- endif -%}
-          {%- assign duration_text = duration_text | append: " " | append: remaining_months | append: " month" -%}
-          {%- if remaining_months > 1 -%}
-            {%- assign duration_text = duration_text | append: "s" -%}
-          {%- endif -%}
+          {%- assign duration_text = duration_years | append: "y" -%}
+          {%- assign duration_text = duration_text | append: " " | append: remaining_months | append: "mo" -%}
         {%- else -%}
-          {%- assign duration_text = duration_years | append: " year" -%}
-          {%- if duration_years > 1 -%}
-            {%- assign duration_text = duration_text | append: "s" -%}
-          {%- endif -%}
+          {%- assign duration_text = duration_years | append: "y" -%}
         {%- endif -%}
       {%- else -%}
-        {%- assign duration_text = total_months | append: " month" -%}
-        {%- if total_months > 1 -%}
-          {%- assign duration_text = duration_text | append: "s" -%}
-        {%- endif -%}
+        {%- assign duration_text = total_months | append: "mo" -%}
       {%- endif -%}
     {%- endif -%}
   {%- endif -%}
