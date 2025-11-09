@@ -5,14 +5,14 @@ end_date: 31 May 2025
 ---
 ### Data Team
 
-#### Nonprofit Database
+#### Nonprofits Database
 * Scraped data from official government sources periodically
 * Maintained database of nonprofits from many countries
-* Scraped nonprofit websites using URLs from the official data
+* Scraped nonprofits' websites using URLs from the official data
 * Reduced churn and improved sales by monitoring changes to websites
 
 #### Business Reports
-* Hired and managed developers and analysts
+* Hired and managed data engineers and data analysts
 * Built tabular and graphical dashboards
 * Improved performance of SQL queries
 * Serviced data requests from all departments
@@ -20,21 +20,21 @@ end_date: 31 May 2025
 ### Growth Team
 
 #### New Signup Flow
-* Refactor backend logic to enable smoother flow
-* Reimplement signup flow to reduce dropoff and steps
-* Use Nonprofit Database to customize for orgs from different countries
-* Harden backend security to defend against fraudulent signups
+* Refactored backend logic to make room for smoother flows
+* Reimplemented signup flow to reduce steps and dropoffs
+* Tailored for each country based on Nonprofits Database
+* Hardened backend security to defend against fraudulent signups
 
 #### Donation Widgets on Organizations' Websites
-* Sticky button for increased donation visibility
-* Reminder widget to recover abandoned donations
-* Social widget to encourage visitors to donate
+* Increased donation visibility with Sticky button
+* Recovered abandoned donations with Reminder widget
+* Drove donation attempts with Social widget
 
 #### Internationalization and Localization
 * Set up processes and managed developers for a multi-year project
 * Integrated translation management tools to sync with application
 * Built tools for tighter feedback loop between translation and UI
-* Opened European markets
+* Opened European markets with close collaboration with other teams
 
 ### AI Team
 
