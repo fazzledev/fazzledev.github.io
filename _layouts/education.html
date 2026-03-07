@@ -1,0 +1,28 @@
+---
+layout: index
+---
+
+<div class="home">
+  {{ content }}
+
+  <ul class="post-list">
+    {%- for entry in page.entries -%}
+    <li>
+      {% include date-range.html start_date=entry.start_date end_date=entry.end_date %}
+      {%- if entry.program -%}
+        <span class="experience-role">{{ entry.program }}</span>
+      {%- endif -%}
+      <h3>
+        {%- if entry.link -%}
+          <a class="post-link" href="{{ entry.link }}" target="_blank">{{ entry.institution }}</a>
+        {%- else -%}
+          {{ entry.institution }}
+        {%- endif -%}
+      </h3>
+      {%- if entry.description -%}
+        {{ entry.description | markdownify }}
+      {%- endif -%}
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>
