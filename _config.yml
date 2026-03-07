@@ -30,6 +30,12 @@ upwork_username: fazzledev
 
 domain: fazzledev.github.io
 
+header_pages:
+  - index.markdown
+  - education.markdown
+  - experiences.markdown
+  - posts.markdown
+
 # Build settings
 theme: minima
 plugins:
